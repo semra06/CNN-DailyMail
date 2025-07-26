@@ -1,136 +1,161 @@
-# NLP Ödevi: Haber Başlıklarından Otomatik Özetleme
+🧠 NLP Assignment: Automatic Summarization from News Headlines
 
-Bu proje, CNN/DailyMail veri seti kullanılarak haber makalelerinden otomatik özet çıkarma işlemini gerçekleştiren bir NLP (Doğal Dil İşleme) uygulamasıdır.
+This project is a Natural Language Processing (NLP) application that performs automatic summarization of news articles using the CNN/DailyMail dataset.
+📋 Project Summary
 
-## 📋 Proje Özeti
+This project performs automatic summarization of news articles using the T5 (Text-to-Text Transfer Transformer) model. The model is trained on the articles and summaries from the CNN/DailyMail dataset.
+🎯 Objectives
 
-Bu proje, T5 (Text-to-Text Transfer Transformer) modelini kullanarak haber makalelerinden otomatik özet çıkarma görevini gerçekleştirir. Model, CNN/DailyMail veri setindeki makaleleri ve bunların özetlerini kullanarak eğitilmiştir.
+    Automatically summarize news articles
 
-## 🎯 Hedefler
+    Evaluate the performance of the T5 model
 
-- Haber makalelerinden otomatik özet çıkarma
-- T5 modelinin performansını değerlendirme
-- ROUGE metrikleri ile özet kalitesini ölçme
-- Türkçe dokümantasyon ile proje açıklaması
+    Measure summary quality using ROUGE metrics
 
-## 📊 Sonuçlar
+    Provide documentation in Turkish
 
-### Model Performansı
-Model eğitimi tamamlandıktan sonra elde edilen ROUGE skorları:
+📊 Results
+Model Performance
 
-- **ROUGE-1**: 0.3224
-- **ROUGE-2**: 0.0715  
-- **ROUGE-L**: 0.2239
+After completing the training, the obtained ROUGE scores are:
 
-Bu skorlar, modelin özetleme görevinde makul bir performans gösterdiğini işaret etmektedir.
+    ROUGE-1: 0.3224
 
-## 🏗️ Proje Yapısı
+    ROUGE-2: 0.0715
 
-```
+    ROUGE-L: 0.2239
+
+These scores indicate a reasonable performance of the model in the summarization task.
+🏗️ Project Structure
+
 NLP_ödevi/
-├── main.py                 # Ana çalıştırma dosyası
-├── preprocess_data.py      # Veri ön işleme fonksiyonları
-├── train_and_evaluate.py   # Model eğitimi ve değerlendirme
-├── requirements.txt        # Gerekli kütüphaneler
-├── evaluation_results.json # Değerlendirme sonuçları
-└── README.md              # Bu dosya
-```
+├── main.py                 # Main script to run the project
+├── preprocess_data.py      # Data preprocessing functions
+├── train_and_evaluate.py   # Model training and evaluation
+├── requirements.txt        # Required libraries
+├── evaluation_results.json # Evaluation results
+└── README.md              # This file
 
-## 🔧 Kullanılan Teknolojiler
+🔧 Technologies Used
 
-- **Python 3.x**
-- **PyTorch**: Derin öğrenme framework'ü
-- **Transformers**: Hugging Face transformers kütüphanesi
-- **T5-small**: Özetleme için kullanılan model
-- **ROUGE**: Özet kalitesi değerlendirme metriği
-- **Datasets**: Hugging Face datasets kütüphanesi
+    Python 3.x
 
-## 📦 Kurulum
+    PyTorch: Deep learning framework
 
-1. Gerekli kütüphaneleri yükleyin:
-```bash
+    Transformers: Hugging Face Transformers library
+
+    T5-small: Pretrained model used for summarization
+
+    ROUGE: Metric for evaluating summary quality
+
+    Datasets: Hugging Face Datasets library
+
+📦 Installation
+
+    Install the required libraries:
+
 pip install -r requirements.txt
-```
 
-2. Projeyi çalıştırın:
-```bash
+    Run the project:
+
 python main.py
-```
 
-## 🔄 Çalışma Süreci
+🔄 Workflow
+1. Data Loading
 
-### 1. Veri Yükleme
-- CNN/DailyMail veri seti (3.0.0 versiyonu) yüklenir
-- Train, validation ve test setleri ayrılır
+    Load CNN/DailyMail dataset (version 3.0.0)
 
-### 2. Model Hazırlığı
-- T5-small modeli ve tokenizer yüklenir
-- Model parametreleri ayarlanır
+    Split into train, validation, and test sets
 
-### 3. Veri Ön İşleme
-- Metinler temizlenir (küçük harf, noktalama işaretleri kaldırma)
-- Stop words kaldırılır
-- Tokenization işlemi gerçekleştirilir
-- Maksimum uzunluk sınırlamaları uygulanır
+2. Model Setup
 
-### 4. Model Eğitimi
-- 500 örnek ile eğitim gerçekleştirilir
-- 3 epoch boyunca eğitim
-- Validation seti ile performans izleme
+    Load the T5-small model and tokenizer
 
-### 5. Değerlendirme
-- Test seti üzerinde özetleme
-- ROUGE metrikleri hesaplama
-- Sonuçların JSON formatında kaydedilmesi
+    Set model parameters
 
-## 📈 Model Parametreleri
+3. Data Preprocessing
 
-- **Model**: T5-small
-- **Maksimum giriş uzunluğu**: 512 token
-- **Maksimum hedef uzunluğu**: 128 token
-- **Eğitim epoch sayısı**: 3
-- **Batch size**: 2
-- **Learning rate**: 3e-5
+    Clean text (lowercasing, remove punctuation)
 
-## 📊 Veri Seti Bilgileri
+    Remove stop words
 
-- **Kaynak**: CNN/DailyMail veri seti
-- **Eğitim örnekleri**: 500 (ilk 500 örnek)
-- **Validation örnekleri**: 50
-- **Test örnekleri**: 5
-- **Giriş**: Haber makaleleri
-- **Hedef**: Makale özetleri
+    Apply tokenization
 
-## 🎯 Sonuçlar ve Değerlendirme
+    Apply maximum length limits
 
-Proje başarıyla tamamlanmış ve aşağıdaki sonuçlar elde edilmiştir:
+4. Model Training
 
-- Model eğitimi tamamlandı
-- ROUGE skorları hesaplandı
-- Örnek özetler üretildi
-- Sonuçlar JSON dosyasına kaydedildi
+    Train using 500 examples
 
-### ROUGE Skorları Analizi:
-- **ROUGE-1 (0.3224)**: Tek kelime örtüşmesi - makul seviyede
-- **ROUGE-2 (0.0715)**: İki kelime örtüşmesi - geliştirilebilir
-- **ROUGE-L (0.2239)**: En uzun ortak alt dizi - kabul edilebilir
+    Train for 3 epochs
 
-## 🔮 Gelecek Geliştirmeler
+    Monitor performance with validation set
 
-- Daha büyük veri seti kullanımı
-- Farklı model mimarileri deneme
-- Hiperparametre optimizasyonu
-- Daha uzun eğitim süresi
-- Türkçe veri seti ile deneme
+5. Evaluation
 
-## 📝 Lisans
+    Summarize on the test set
 
-Bu proje eğitim amaçlı geliştirilmiştir.
+    Compute ROUGE metrics
 
-## 👨‍💻 Geliştirici
+    Save results in JSON format
 
-Bu proje NLP dersi kapsamında geliştirilmiştir.
+📈 Model Parameters
 
----
+    Model: T5-small
 
-**Not**: Bu proje, doğal dil işleme alanında özetleme görevlerinin nasıl gerçekleştirileceğini göstermek amacıyla hazırlanmıştır. 
+    Max input length: 512 tokens
+
+    Max target length: 128 tokens
+
+    Number of epochs: 3
+
+    Batch size: 2
+
+    Learning rate: 3e-5
+
+📊 Dataset Information
+
+    Source: CNN/DailyMail dataset
+
+    Training examples: 500 (first 500 entries)
+
+    Validation examples: 50
+
+    Test examples: 5
+
+    Input: News articles
+
+    Target: Article summaries
+
+🎯 Results & Evaluation
+
+The project was successfully completed with the following outcomes:
+
+    Model training completed
+
+    ROUGE scores calculated
+
+    Example summaries generated
+
+    Results saved in a JSON file
+
+ROUGE Score Analysis:
+
+    ROUGE-1 (0.3224): Unigram overlap — moderate performance
+
+    ROUGE-2 (0.0715): Bigram overlap — room for improvement
+
+    ROUGE-L (0.2239): Longest common subsequence — acceptable
+
+🔮 Future Improvements
+
+    Use a larger dataset
+
+    Experiment with different model architectures
+
+    Hyperparameter tuning
+
+    Extend training duration
+
+
+
