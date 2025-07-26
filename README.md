@@ -134,4 +134,3 @@ Bu proje NLP dersi kapsamında geliştirilmiştir.
 ---
 
 **Not**: Bu proje, doğal dil işleme alanında özetleme görevlerinin nasıl gerçekleştirileceğini göstermek amacıyla hazırlanmıştır. 
-
